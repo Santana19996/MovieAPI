@@ -21,21 +21,19 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () =>
 
 // Middlewares
 // Body Parser
-app.use(cors());
 app.use(express.json());
 
 // Route Middlewares
 
-app.use("/api/user", authRoute);
+// API DOESNT SUPPORT LIMIT Looking for work around
 
-// app.get("/", (req, res) => {
-//   movieService.getMovies.then((response) => {
-//     res.send(response);
-//   });
-// });
+app.use("/api/user", authRoute);
+// app.use("/api/dummy", dummyRoute);
+//  No, Give me a zoom link
+//
 
 app.get("/", (req, res) => {
-  movieService.getInTheaterMovies().then((response) => {
+  movieService.getMovies.then((response) => {
     res.send(response);
   });
 });

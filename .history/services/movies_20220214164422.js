@@ -55,10 +55,10 @@ class MovieService {
     });
   }
 
-  async fetchNowPlayingInTheaters() {
+  async fetchNowPlayingInTheaters(searchTerm) {
     return new Promise((resolve, reject) => {
       axios
-        .get(this.generateFetchUrl(`InTheaters`))
+        .get(this.generateSearchUrl(`SearchMovie`, searchTerm))
         .then((response) => {
           resolve(response.data);
         })
@@ -78,11 +78,6 @@ class MovieService {
   getMovieSearch(searchTerm) {
     let searchMovie = this.fetchMovieSearchByTerm(searchTerm);
     return searchMovie;
-  }
-
-  getInTheaterMovies() {
-    let nowPlaying = this.fetchNowPlayingInTheaters();
-    return nowPlaying;
   }
 }
 

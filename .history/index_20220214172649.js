@@ -26,7 +26,12 @@ app.use(express.json());
 
 // Route Middlewares
 
+// API DOESNT SUPPORT LIMIT Looking for work around
+
 app.use("/api/user", authRoute);
+// app.use("/api/dummy", dummyRoute);
+//  No, Give me a zoom link
+//
 
 // app.get("/", (req, res) => {
 //   movieService.getMovies.then((response) => {
@@ -35,7 +40,7 @@ app.use("/api/user", authRoute);
 // });
 
 app.get("/", (req, res) => {
-  movieService.getInTheaterMovies().then((response) => {
+  movieService.getInTheatreMovies.then((response) => {
     res.send(response);
   });
 });

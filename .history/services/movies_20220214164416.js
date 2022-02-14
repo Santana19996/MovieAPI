@@ -55,19 +55,19 @@ class MovieService {
     });
   }
 
-  async fetchNowPlayingInTheaters() {
-    return new Promise((resolve, reject) => {
-      axios
-        .get(this.generateFetchUrl(`InTheaters`))
-        .then((response) => {
-          resolve(response.data);
-        })
-        .catch((err) => {
-          console.log("ERROR", err);
-          reject(err);
-        });
-    });
-  }
+
+async fetchNowPlayingInTheaters(searchTerm) {
+return new Promise((resolve, reject) => {
+  axios.get(this.generateSearchUrl(`SearchMovie`, searchTerm)).then((response) => {
+    resolve(response.data);
+  })
+  .catch((err) => {
+    console.log("ERROR", err);
+    reject(err);
+  })
+});
+})
+
 
   get getMovies() {
     let popMovies = this.fetchPopularMovies();
@@ -79,11 +79,8 @@ class MovieService {
     let searchMovie = this.fetchMovieSearchByTerm(searchTerm);
     return searchMovie;
   }
-
-  getInTheaterMovies() {
-    let nowPlaying = this.fetchNowPlayingInTheaters();
-    return nowPlaying;
-  }
 }
+
+
 
 exports.default = MovieService;

@@ -35,7 +35,7 @@ app.use("/api/user", authRoute);
 // });
 
 app.get("/", (req, res) => {
-  movieService.getInTheaterMovies().then((response) => {
+  movieService.getInTheatreMovies.then((response) => {
     res.send(response);
   });
 });

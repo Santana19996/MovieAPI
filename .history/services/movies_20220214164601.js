@@ -55,10 +55,10 @@ class MovieService {
     });
   }
 
-  async fetchNowPlayingInTheaters() {
+  async fetchNowPlayingInTheaters(searchTerm) {
     return new Promise((resolve, reject) => {
       axios
-        .get(this.generateFetchUrl(`InTheaters`))
+        .get(this.generateSearchUrl(`InTheatres`, searchTerm))
         .then((response) => {
           resolve(response.data);
         })
@@ -79,11 +79,16 @@ class MovieService {
     let searchMovie = this.fetchMovieSearchByTerm(searchTerm);
     return searchMovie;
   }
-
-  getInTheaterMovies() {
-    let nowPlaying = this.fetchNowPlayingInTheaters();
-    return nowPlaying;
-  }
 }
+
+getInTheatreMovies() {
+  let nowPlaying = this.fetchNowPlayingInTheaters(searchTerm);
+  return  nowPlaying;
+}
+}
+
+
+
+
 
 exports.default = MovieService;

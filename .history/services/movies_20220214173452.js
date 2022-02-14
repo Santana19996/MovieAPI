@@ -58,7 +58,7 @@ class MovieService {
   async fetchNowPlayingInTheaters() {
     return new Promise((resolve, reject) => {
       axios
-        .get(this.generateFetchUrl(`InTheaters`))
+        .get(this.generateFetchUrl(`InTheatres`))
         .then((response) => {
           resolve(response.data);
         })
